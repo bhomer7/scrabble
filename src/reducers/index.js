@@ -3,7 +3,7 @@ import {createSelector} from 'reselect';
 import board, {selectors as boardSelectors} from './board';
 import tiles, {selectors as tilesSelectors} from './tiles';
 import players, {selectors as playerSelectors} from './players';
-import turn from './turn';
+import turn, {selectors as turnSelectors} from './turn';
 
 export default combineReducers({
   board,
@@ -35,3 +35,4 @@ export const getPoints = (state, player) => playerSelectors.getPoints(state.play
 export const getSelected = (state, player) => playerSelectors.getSelected(state.players, player);
 export const getTiles = (state, count) => tilesSelectors.getTiles(state.tiles, count);
 export const getValue = (state, letter) => tilesSelectors.getValue(state.tiles, letter);
+export const getTurn = (state) => turnSelectors.getTurn(state.turn);

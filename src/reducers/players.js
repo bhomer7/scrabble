@@ -6,7 +6,6 @@ const {INITIAL_STATE, RACK_TILE_SELECTED} = ActionTypes;
 export default function players(state = {}, action) {
   switch (action.type) {
     case RACK_TILE_SELECTED:
-      action.turn = action.player;
       return Object.assign({}, state, {
         1: player(state[1], action),
         2: player(state[2], action)

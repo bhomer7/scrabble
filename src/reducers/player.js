@@ -2,7 +2,7 @@ import {ActionTypes} from '../constants';
 const {INITIAL_STATE, RACK_TILE_SELECTED} = ActionTypes;
 
 export default function player(state = {}, action) {
-  if (action.turn !== state.id && action.type !== INITIAL_STATE) {
+  if (action.player !== state.id || action.turn !== state.id && action.type !== INITIAL_STATE) {
     return state;
   }
 

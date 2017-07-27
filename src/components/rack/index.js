@@ -1,5 +1,5 @@
 import React from 'react';
-import {Rack} from './rack';
+import Rack from './rack';
 import {getPlayers} from '../../reducers';
 import {connect} from 'react-redux';
 import './racks.css';
