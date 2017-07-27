@@ -12,6 +12,10 @@
   text-transform: uppercase;
 }
 
+.selected {
+  background: orange;
+}
+
 .double-word {
   background-color: #fdaccb;
 }

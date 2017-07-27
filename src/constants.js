@@ -1,6 +1,7 @@
 export const ActionTypes = {
   INITIAL_STATE: 'INITIAL_STATE',
-  TILE_SELECTED: 'TILE_SELECTED'
+  RACK_TILE_SELECTED: 'RACK_TILE_SELECTED',
+  BOARD_TILE_SELECTED: 'BOARD_TILE_SELECTED'
 };
 
 export const Multipliers = {

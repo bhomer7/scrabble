@@ -1,14 +1,13 @@
 import {ActionTypes} from '../constants';
-const {INITIAL_STATE, TILE_SELECTED} = ActionTypes;
+const {INITIAL_STATE, RACK_TILE_SELECTED} = ActionTypes;
 
 export default function player(state = {}, action) {
   if (action.turn !== state.id && action.type !== INITIAL_STATE) {
-    console.log("doing nothing");
     return state;
   }
 
   switch (action.type) {
-    case TILE_SELECTED:
+    case RACK_TILE_SELECTED:
       if (state.selected < 0) {
         return Object.assign({}, state, {
           selected: action.selected

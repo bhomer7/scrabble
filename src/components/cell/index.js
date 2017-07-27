@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import './cell.css';
+import Tile from '../tile';
 import {Multipliers} from '../../constants';
 
 export default function Cell({cell, row, col}) {
@@ -15,7 +16,7 @@ export default function Cell({cell, row, col}) {
   return (
     <div className={classNames} id={`${row}_${col}`}>
       <div className="letter">
-        {cell.letter || ''}
+        <Tile key={row*15+col} row={row} col={col} tileId={row*15+col} letter={cell.letter || ''} />
       </div>
     </div>
   );
