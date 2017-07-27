@@ -5,10 +5,10 @@ import rackActionCreators from '../../action_creators/rack';
 import Tile from '../tile';
 import './rack.css';
 
-function Rack({playerId, letters, points, endTurn}) {
+function Rack({playerId, letters, points, active, endTurn}) {
   return (
     <div className="rack">
-      <div className="player">
+      <div className={'player' + (active ? ' active' : '')}>
         {'Player ' + playerId}
       </div>
       <div className="score">

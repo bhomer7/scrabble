@@ -1,7 +1,7 @@
 import {ActionTypes} from '../constants';
 import player, {selectors as playerSelectors} from './player';
 
-const {INITIAL_STATE, RACK_TILE_SELECTED} = ActionTypes;
+const {INITIAL_STATE, RACK_TILE_SELECTED, BOARD_TILE_SELECTED, END_TURN} = ActionTypes;
 
 export default function players(state = {}, action) {
   switch (action.type) {
@@ -9,6 +9,16 @@ export default function players(state = {}, action) {
       return Object.assign({}, state, {
         1: player(state[1], action),
         2: player(state[2], action)
+      });
+    case BOARD_TILE_SELECTED:
+      return Object.assign({}, state, {
+        1: player(state[1], {...action, player: 1}),
+        2: player(state[2], {...action, player: 2})
+      });
+    case END_TURN:
+      return Object.assign({}, state, {
+        1: player(state[1], {...action, turn: 1}),
+        2: player(state[2], {...action, turn: 2})
       });
     case INITIAL_STATE:
       return {

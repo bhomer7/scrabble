@@ -16,8 +16,9 @@ export default function Cell({cell, row, col}) {
   return (
     <div className={classNames} id={`${row}_${col}`}>
       <div className="letter">
-        <Tile key={row*15+col} row={row} col={col} tileId={row*15+col} letter={cell.letter || ''} />
+        <Tile key={row * 15 + col} row={row} col={col} tileId={row * 15 + col} letter={cell.letter || ''} />
       </div>
     </div>
   );
 }
+

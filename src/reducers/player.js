@@ -1,8 +1,8 @@
-import {ActionTypes} from '../constants';
-const {INITIAL_STATE, RACK_TILE_SELECTED} = ActionTypes;
+import {ActionTypes, CellStates} from '../constants';
+const {INITIAL_STATE, RACK_TILE_SELECTED, END_TURN, BOARD_TILE_SELECTED} = ActionTypes;
 
 export default function player(state = {}, action) {
-  if (action.player !== state.id || action.turn !== state.id && action.type !== INITIAL_STATE) {
+  if (action.player !== state.id || (action.turn !== state.id && action.type !== INITIAL_STATE)) {
     return state;
   }
 
@@ -22,6 +22,21 @@ export default function player(state = {}, action) {
           selected: -1
         });
       }
+    case BOARD_TILE_SELECTED:
+      if (state.selected > -1 && action.cellstate === CellStates.EMPTY) {
+        let newletters = state.letters.slice();
+        newletters.splice(state.selected, 1);
+        return Object.assign({}, state, {
+          letters: newletters,
+          selected: -1
+        });
+      } else {
+        return state;
+      }
+    case END_TURN:
+      return Object.assign({}, state, {
+        selected: -1
+      });
     case INITIAL_STATE:
       return {
         id: action.id,

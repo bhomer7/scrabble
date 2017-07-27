@@ -3,6 +3,10 @@
   display: block;
 }
 
+.active {
+  background: lightgreen;
+}
+
 .tiles {
   width: 490px;
   height: 70px;
