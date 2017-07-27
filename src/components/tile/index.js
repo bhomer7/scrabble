@@ -5,12 +5,8 @@ import tileActionCreators from '../../action_creators/tile';
 import {bindActionCreators} from 'redux';
 import './tile.css';
 
-function Tile({tileId, player, letter, value, selectedRack, selectedLetter, selectedBoard, selectTile, activeTurn, board}) {
-  const classes =
-    'button' +
-    ((activeTurn === player && selectedRack === tileId) || selectedBoard.row * 15 + selectedBoard.col === tileId
-      ? ' selected'
-      : '');
+function Tile({tileId, player, letter, value, selectedRack, selectedLetter, selectTile, activeTurn, board}) {
+  const classes = 'button' + (activeTurn === player && selectedRack === tileId ? ' selected' : '');
   return (
     <button
       className={classes}
@@ -31,11 +27,10 @@ function Tile({tileId, player, letter, value, selectedRack, selectedLetter, sele
 
 function mapStateToProps(state, tileinfo) {
   return {
-    letter: tileinfo.letter,
-    value: getValue(state, tileinfo.letter),
-    selectedRack: getSelected(state, getTurn(state)),
-    selectedLetter: getLetters(state, getTurn(state))[getSelected(state, getTurn(state))] || '',
-    selectedBoard: getBoardSelected(state),
+    letter: tileinfo.letter, //the letter here
+    value: getValue(state, tileinfo.letter), //the point value of the letter here
+    selectedRack: getSelected(state, getTurn(state)), //the rack the selection is on
+    selectedLetter: getLetters(state, getTurn(state))[getSelected(state, getTurn(state))] || '', //the letter of the previous selection
     activeTurn: getTurn(state),
     board: getBoard(state)
   };

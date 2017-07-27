@@ -6,13 +6,11 @@ const {INITIAL_STATE, BOARD_TILE_SELECTED} = ActionTypes;
 function board(state = [], action) {
   switch (action.type) {
     case BOARD_TILE_SELECTED:
-      if (action.rack !== '' && state.board[action.selected.row][action.selected.col].status === CellStates.EMPTY) {
-        let newboard = state.board.slice();
+      if (action.rack !== '' && state[action.selected.row][action.selected.col].status === CellStates.EMPTY) {
+        let newboard = state.slice();
         newboard[action.selected.row][action.selected.col].status = CellStates.PENDING;
         newboard[action.selected.row][action.selected.col].letter = action.rack;
-        return Object.assign({}, state, {
-          board: newboard
-        });
+        return newboard;
       }
       return state;
     /*if (state.selected.row < 0 && state.selected.col < 0) {
@@ -25,10 +23,7 @@ function board(state = [], action) {
         });
       }*/
     case INITIAL_STATE:
-      return {
-        board: initializeBoard(BoardConfigurations.SCRABBLE),
-        selected: {row: -1, col: -1}
-      };
+      return initializeBoard(BoardConfigurations.SCRABBLE);
     default:
       return state;
   }
@@ -36,8 +31,7 @@ function board(state = [], action) {
 
 // results in an api like boardSelectors.getBoard(state.board);
 export const selectors = {
-  getBoard: state => state.board,
-  getSelected: state => state.selected
+  getBoard: state => state
 };
 
 // alternate way to write selectors
